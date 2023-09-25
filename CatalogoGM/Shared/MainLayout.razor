@@ -1,0 +1,56 @@
+﻿@inherits LayoutComponentBase
+
+<div >
+@*     <div class="sidebar">
+        <NavMenu />
+    </div> *@
+
+    <main>
+        <header>
+            <nav>
+                <a href="">Inicio</a>
+                <a href="juegos">Juegos</a>
+                <a href="generos">Generos</a>
+                <a href="about">Acerca de nosotros</a>
+            </nav>
+
+
+            <section class="textosprincipal">
+
+                <img src="image/byrongames.png" alt="" class="byrongames logo">
+                <h1 class="letrasAnimadas">Descarga tus juegos facil y rapido</h1>
+                <h2>Con una página web potente</h2>
+            </section>
+            <div class="wave" style="height: 150px; overflow: hidden;">
+                <svg viewBox="0 0 500 150" preserveAspectRatio="none"
+                     style="height: 100%; width: 100%;">
+                    <path d="M0.00,49.98 C150.00,150.00 349.20,-50.00 500.00,49.98 L500.00,150.00 L0.00,150.00 Z"
+                          style="stroke: none; fill: rgb(255, 255, 255);"></path>
+                </svg>
+            </div>
+        </header>
+
+        <article >
+            @Body
+        </article>
+
+        <footer>
+            <div class="contenedor-footer">
+                <div class="content-foo">
+                    <h4>Telefonos</h4>
+                    <p>70506166</p>
+                </div>
+                <div class="content-foo">
+                    <h4>Email</h4>
+                    <p>byron_marinero@outlook.com</p>
+                </div>
+                <div class="content-foo">
+                    <h4>Direccion</h4>
+                    <p>Col. sensunapan 2, acceso 66666666, casa #5</p>
+                </div>
+            </div>
+            <h2 class="titulo-final">&copy; ByronMH Design/Developer | Byron Marinero</h2>
+        </footer>
+
+    </main>
+</div>

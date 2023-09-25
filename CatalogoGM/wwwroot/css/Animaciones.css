@@ -1,0 +1,60 @@
+﻿body {
+}
+
+/*Animacion logo circulo*/
+.logo {
+    width: 200px;
+    height: 220px;
+    animation-name: latir;
+    animation-duration: 1s;
+    animation-iteration-count: 25s;
+}
+
+@keyframes latir {
+    0% {
+        transform: scale(0);
+    }
+
+    20% {
+        transform: scale(.5);
+    }
+
+    40% {
+        transform: scale(1);
+    }
+
+    60% {
+        transform: scale(1.5);
+    }
+
+    80% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(.5);
+    }
+}
+
+/*Animacion letras Header*/
+.letrasAnimadas {
+    display: block;
+    font-family: monospace;
+    white-space: nowrap;
+    border-right: 4px solid;
+    width: 20ch;
+    animation: typing 2s steps(13), bling .5s infinite step-end alternate;
+    overflow: hidden;
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+}
+
+@keyframes blink {
+    50% {
+        border-color: transparent;
+    }
+}
