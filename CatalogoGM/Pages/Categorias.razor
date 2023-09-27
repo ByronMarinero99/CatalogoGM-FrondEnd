@@ -1,0 +1,33 @@
+﻿@using Models;
+@using Services;
+
+@page "/categorias"
+
+@inject ICaracteristicasGameService CaracteristicasGamesService;
+
+        <h1 class="text-center display-4">Categorias</h1>
+        <div class="row">
+                            @foreach (var item in caracteristicasGames)
+                {
+            <!-- categoria -->
+                <div class="col-md-4">
+                    <div class="card" style="width: 18rem;">
+                        <img src="image/games.png" class="card-img-top" alt="categoria">
+                        <div class="card-body">
+                            <h5 class="card-title">Categoria:</h5>
+                            <p class="card-text">Descripcion: </p>
+                            <a href="#" class="btn btn-danger">ver juegos</a>
+                        </div>
+                    </div>
+                </div>
+                }
+            </div>
+
+@code {
+    IEnumerable<CaracteristicasGames> caracteristicasGames = new List<CaracteristicasGames>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        caracteristicasGames = await CaracteristicasGamesService.GetAll();
+    }
+}

@@ -42,8 +42,8 @@
     font-family: monospace;
     white-space: nowrap;
     border-right: 4px solid;
-    width: 20ch;
-    animation: typing 2s steps(13), bling .5s infinite step-end alternate;
+    width: 34ch;
+    animation: typing 2s steps(17), bling .5s infinite step-end alternate;
     overflow: hidden;
 }
 
