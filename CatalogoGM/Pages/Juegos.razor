@@ -1,4 +1,8 @@
-﻿@page "/juegos"
+﻿@using Models;
+@using Services;
+@page "/juegos"
+
+@inject ICaracteristicasGameService CaracteristicasGamesService;
 
 
 <main>
@@ -69,65 +73,13 @@
 
 
 
-<div class="row">
-    <div class="col-md-12">
-        <form asp-action="Index">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label class="control-label">Nombre</label>
-                        <input type="text" class="form-control" name="nombre" />
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label class="control-label">Categorias</label>
-                        <select name="IdAutores" class="form-control">
-                            <option selected value="0">SELECCIONAR</option>
-@*                             @foreach (var item in Categorias)
-                            {
-                                <option value="@item.Id"> @item.Nombre </option>
-                            } *@
-                        </select>
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label class="control-label">Top</label>
-                        <select name="top_aux" class="form-control">
-@*                             @foreach (var item in tops)
-                            {
-                                string strItem = item != -1 ? item.ToString() : "Todos";
-                                if (item != topActual)
-                                {
-                                    <option value="@item">@strItem</option>
-                                }
-                                else
-                                {
-                                    <option selected value="@item">@strItem</option>
-                                }
-                            } *@
-                        </select>
-                    </div>
-                </div>
-            </div>
-            <br />
-            <div class="form-group">
-                <input type="submit" value="Buscar" class="btn btn-primary py-md-2 px-md-4 font-weight-semi-bold mt-2" />
-            </div>
-            <br />
-        </form>
-    </div>
-</div>
-
 
 <div class="container-fluid">
     <div class="container-fluid py-5">
         <div class="container py-5">
             <div class="row">
-@*                 @foreach (var item in Model)
-                { *@
+                @foreach (var item in caracteristicasGames)
+                {
                     <div class="col-lg-4 col-md-6 mb-4">
                         <div class="rounded overflow-hidden mb-2" @* data-page="@numPage" *@>
                             <div class="cat-item position-relative overflow-hidden rounded mb-2">
@@ -136,50 +88,42 @@
                             </div>
                             <div class="bg-secondary p-4">
                                 <div class="d-flex justify-content-between mb-3">
-                                    <small class="m-0"><i class="bi bi-bookmark-star-fill"></i> @* @Html.DisplayFor(modelItem => item.Categoria.Nombre) *@  Categoria</small>
-                                    <small class="m-0"><i class="bi bi-calendar-check"></i> @* @Html.DisplayFor(modelItem => item.FechaActualizacion) *@ Fecha actualizacion</small>
+                                    <small class="m-0"><i class="bi bi-bookmark-star-fill"></i> Juegos  </small>
+                                    <small class="m-0"><i class="bi bi-calendar-check"></i> @item.Fecha </small>
                                 </div>
-                                <small class="m-0"><i class="far fa-clock text-primary mr-2"></i> @* @Html.DisplayFor(modelItem => item.Duracion) *@ duracion</small>
-                                <h6 class="m-0"><i class="bi bi-person-video2"></i> @* @Html.DisplayFor(modelItem => item.Autor) *@ autor</h6>
-                                <a href="@* /CursoEstudiante/Details/@item.Id *@" class="h5">@* @Html.DisplayFor(modelItem => item.Nombre) *@ nombre</a>
+                                <small class="m-0"><i class="far fa-clock text-primary mr-2"></i>@item.Version </small>
+                                <h6 class="m-0"><i class="bi bi-person-video2"></i> @item.Formato autor</h6>
+                                <a href="@* /CursoEstudiante/Details/@item.Id *@" class="h5">@item.Nombre </a>
                                 <div>
-                                    <h6 class="m-0"><small><i class="bi bi-check-circle"></i> @* @Html.DisplayFor(modelItem => item.Descripcion) *@ descripcion</small></h6>
-                                    <h6 class="m-0"><small><i class="bi bi-check-circle"></i> @* @Html.DisplayFor(modelItem => item.Requisitos) *@ requisitos</small></h6>
+                                    <h6 class="m-0"><small><i class="bi bi-check-circle"></i> @item.Plataforma </small></h6>
+                                    <h6 class="m-0"><small><i class="bi bi-check-circle"></i> @item.size </small></h6>
                                 </div>
                                 <div class="border-top mt-4 pt-4">
                                     <div class="d-flex justify-content-between">
-                                        <h6 class="m-0">Antes: <del>@* @Html.DisplayFor(modelItem => item.PrecioAnterior) *@ precio anteriror</del> </h6>
-                                        <h5 class="m-0"><i class="bi bi-coin"></i> @* @Html.DisplayFor(modelItem => item.Precio) *@ precio</h5>
+                                        <h6 class="m-0">Antes: <del> @item.tipoGenrosId</del> </h6>
+                                        <h5 class="m-0"><i class="bi bi-coin"></i> Gratis</h5>
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-between">
-                                    <a href="/Curso/Edit/@* @item.Id *@" class="btn btn-primary py-md-2 px-md-4 font-weight-semi-bold mt-2"><i class="bi bi-cart-check-fill"></i> Comprar</a>
+                                    <a href="@item.Genero" class="btn btn-primary py-md-2 px-md-4 font-weight-semi-bold mt-2"><i class="bi bi-cart-check-fill"></i> Descargar</a>
                                 </div>
                             </div>
                         </div>
 
                     </div>
-@*                     numRegistros++;
-                    if (numRegistros == numRegistrosPorPage)
-                    {
-                        numPage++;
-                        numRegistros = 0;
-                    } *@
-                @* } *@
-
+                    }
             </div>
         </div>
     </div>
 
-    @{
-        // if (numRegistros == 0)
-        // {
-        //     numPage--;
-        // }
-    }
 </div>
 
 
 @code {
+    IEnumerable<CaracteristicasGames> caracteristicasGames = new List<CaracteristicasGames>();
 
+    protected override async Task OnInitializedAsync()
+    {
+        caracteristicasGames = await CaracteristicasGamesService.GetAll();
+    }
 }
